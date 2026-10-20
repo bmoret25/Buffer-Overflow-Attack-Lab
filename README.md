@@ -10,11 +10,13 @@ Exploiting a 64-bit stack buffer overflow in `stack-L3-dbg` to gain a shell.
 ## Step 1 — Find the buffer address
 Run gdb on the debug binary and inspect the stack to locate the buffer:
 
+
+```text
 $ gdb ./stack-L3-dbg
 (gdb) break main
 (gdb) run
-(gdb) p &buffer # note the address
-
+(gdb) p &buffer      # note the address
+  ```
 
 ![gdb buffer address](<img width="898" height="732" alt="Screenshot 2026-09-22 200056" src="https://github.com/user-attachments/assets/e62a7114-92f6-4a40-8e7f-1519f5169c46" />)
 
@@ -39,8 +41,9 @@ Update `exploit.py` with:
 
 ## Step 4 — Run the exploit
 
+```
 ./exploit.py ./stack-L3
-
+```
 
 You should drop into a shell:
 
