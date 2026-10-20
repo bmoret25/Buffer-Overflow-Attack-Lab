@@ -18,7 +18,7 @@ $ gdb ./stack-L3-dbg
 (gdb) p &buffer      # note the address
   ```
 
-![gdb buffer address](<img width="898" height="732" alt="Screenshot 2026-09-22 200056" src="https://github.com/user-attachments/assets/e62a7114-92f6-4a40-8e7f-1519f5169c46" />)
+![gdb buffer address](`images/01-gdb-buffer-address.png`)
 
 ## Step 2 — Update `exploit.py`
 Modify the exploit with the 64-bit shellcode. Key parameters:
@@ -27,8 +27,7 @@ Modify the exploit with the 64-bit shellcode. Key parameters:
 - **Offset:** 216 bytes
   - Calculated as `(buffer_address - rbp/ret_address)` — the hex difference came out to 208, plus 8 for the 64-bit saved frame pointer alignment.
 
-![exploit.py shellcode](<img width="876" height="868" alt="Screenshot 2026-09-22 200947" src="https://github.com/user-attachments/assets/3b6d7477-fbf4-4444-afee-9b0a464afc98" />
-)
+![exploit.py shellcode](`images/02-exploit-py-shellcode.png`)
 
 ## Step 3 — Set return address and NOP sled
 Update `exploit.py` with:
@@ -36,8 +35,7 @@ Update `exploit.py` with:
 - **Offset** = 216
 - Small padding/NOP sled offset before the shellcode so the return lands cleanly in the sled
 
-![exploit.py retaddr](<img width="732" height="765" alt="Screenshot 2026-09-22 201024" src="https://github.com/user-attachments/assets/5210e0a4-e9d5-4984-970b-05f4ddc4d318" />
-)
+![exploit.py retaddr](`images/03-exploit-py-retaddr.png`)
 
 ## Step 4 — Run the exploit
 
@@ -47,8 +45,7 @@ Update `exploit.py` with:
 
 You should drop into a shell:
 
-![shell obtained](<img width="796" height="230" alt="Screenshot 2026-09-22 201242" src="https://github.com/user-attachments/assets/6fb5a780-a420-44d7-9591-c1f5feec74ee" />
-)
+![shell obtained](`images/04-shell-obtained.png`)
 
 > ⚠️ **Known issue:** In my environment the spawned shell is a **seed shell, not root** —
 > my machine still doesn't play nicely with zsh. I'm actively working on fixing the
