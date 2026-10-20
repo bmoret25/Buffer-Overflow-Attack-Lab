@@ -45,7 +45,7 @@ Update `exploit.py` with:
 
 You should drop into a shell:
 
-![shell obtained](`images/04-shell-obtained.png`)
+![shell obtained](`Screenshot 2026-09-22 201242.png`)
 
 > ⚠️ **Known issue:** In my environment the spawned shell is a **seed shell, not root** —
 > my machine still doesn't play nicely with zsh. I'm actively working on fixing the
